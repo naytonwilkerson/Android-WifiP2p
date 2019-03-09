@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ConexaoP2p</string>
+    <string name="busca">Busca</string>
+    <string name="wifi">WIFI</string>
+    <string name="buscando_conex_o">Buscando conexão</string>
+    <string name="cadastro">Cadastro :</string>
+    <string name="buscar">Buscar</string>
+    <string name="cadastrar">Cadastrar :</string>
+    <string name="buscando_conex">Buscando Conexão</string>
+    <string name="informa_es">Informações</string>
+</resources>
