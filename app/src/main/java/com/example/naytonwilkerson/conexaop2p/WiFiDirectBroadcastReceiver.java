@@ -20,7 +20,8 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
     private WifiP2pManager.Channel mChannel;
     private MainActivity mActivity;
     private int intNumber;
-    public DISPOSITIVOS   dispositivos = new DISPOSITIVOS();
+    private WifiP2pDeviceList disponiveis;
+
 
     String Disp;
 
@@ -59,31 +60,21 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
         } else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
             // Chamar WifiP2pManager.requestPeers() para obter uma lista dos dispositivos disponiveis
-            if(mManager != null) {
+
 
                 this.mManager.requestPeers(this.mChannel, new WifiP2pManager.PeerListListener (){
                     @Override
                     public void onPeersAvailable(WifiP2pDeviceList peers) {
                         // seu codigo
                         Log.d(TAG, String.format("PeerListListener: %d peers available, updating device list", peers.getDeviceList().size()));
+                        Toast.makeText(context, "lista de dispositivos: "+peers.getDeviceList().toString(), Toast.LENGTH_SHORT).show();
+                        mActivity.preencherSpinner(peers.getDeviceList());
+                        
 
-                        Disp = peers.getDeviceList().toString();
-
-                       // dispositivos.setNome(Disp);
-
-                        for(WifiP2pDevice d : peers.getDeviceList()){
-
-                            Toast.makeText(context, d.deviceName+"  "+d.primaryDeviceType+"  "+"DISPONIVEIS", Toast.LENGTH_SHORT).show();
-
-                            //Toast.makeText(context, Disp+"Dispositivos disponiveis", Toast.LENGTH_LONG).show();
-
-                        }
-
-                        return;
                     }
                 });
-            }
-                    return;
+
+
 
 
         } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
