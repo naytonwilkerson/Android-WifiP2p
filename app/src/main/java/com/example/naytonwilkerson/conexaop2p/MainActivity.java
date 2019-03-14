@@ -92,10 +92,11 @@ public class MainActivity extends Activity {
 
     public void preencherSpinner(Collection<WifiP2pDevice> peers) {
         Toast.makeText(this, "Preenchendo a lista de dispositivos: "+peers.size(), Toast.LENGTH_SHORT).show();
-        List<String> lista = new ArrayList<String>();
+        //List<String> lista = new ArrayList<String>();
         TextView view = findViewById(R.id.textView);
         for (WifiP2pDevice d : peers) {
-            view.append(d.deviceName+"\n");
+            view.append("\n"+d.deviceName+" "+d.deviceAddress+"\n");
+            Toast.makeText(this, "entrou "+peers.size(), Toast.LENGTH_SHORT).show();
             //lista.add(d.deviceName);
 
             //Toast.makeText(this, d.deviceName + "  " + d.primaryDeviceType + "  " + "DISPONIVEIS", Toast.LENGTH_SHORT).show();
